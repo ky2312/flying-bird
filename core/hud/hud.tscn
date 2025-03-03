@@ -197,7 +197,7 @@ anchor_bottom = 0.5
 offset_left = 90.0
 offset_top = -15.5
 offset_right = -90.0
-offset_bottom = 124.5
+offset_bottom = 194.5
 grow_horizontal = 2
 grow_vertical = 2
 vertical = true
@@ -207,6 +207,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "再来一次"
+
+[node name="HomeButton" type="Button" parent="GameEnd/ButtonGroup"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "回到主菜单"
 
 [node name="EndButton" type="Button" parent="GameEnd/ButtonGroup"]
 layout_mode = 2

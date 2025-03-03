@@ -46,6 +46,7 @@ var choose_cache_node_menu_main_control: Array = []
 @onready var node_game_end = $GameEnd
 @onready var node_game_end_button_game_start = $GameEnd/ButtonGroup/StartButton
 @onready var node_game_end_button_game_end = $GameEnd/ButtonGroup/EndButton
+@onready var node_game_end_button_home = $GameEnd/ButtonGroup/HomeButton
 
 func show_menu():
 	node_menu.visible = true
@@ -94,8 +95,9 @@ func _ready() -> void:
 	node_menu_back.connect("pressed", _on_back)
 	node_game_end_button_game_start.connect("pressed", _on_game_start)
 	node_game_end_button_game_end.connect("pressed", _on_game_end)
+	node_game_end_button_home.connect("pressed", _on_home)
 	_init_level_button()
-	_control_next(node_menu_main_control)
+	_on_home()
 	
 func _control_display(list: Array[ControlPage]):
 	for n in list:
@@ -109,6 +111,13 @@ func _control_next(list: Array[ControlPage]):
 func _control_back():
 	choose_cache_node_menu_main_control.pop_back()
 	_control_display(choose_cache_node_menu_main_control[len(choose_cache_node_menu_main_control) - 1])
+func _control_clear():
+	choose_cache_node_menu_main_control.clear()
+
+func _on_home():
+	_control_clear()
+	show_menu()
+	_control_next(node_menu_main_control)
 
 func _on_game_start() -> void:
 	show_playing()
