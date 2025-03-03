@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvbxfm181jb14"]
+[gd_scene load_steps=3 format=3 uid="uid://dvbxfm181jb14"]
 
 [ext_resource type="Script" uid="uid://c4emx8apa8802" path="res://core/hud/hud.gd" id="1_37p78"]
+[ext_resource type="Texture2D" uid="uid://cmw3djhwk2h3d" path="res://assets/UI/gameover.png" id="2_7pn8s"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_37p78")
-metadata/_edit_vertical_guides_ = [180.0, 436.0]
 
 [node name="Menu" type="Control" parent="."]
 layout_mode = 3
@@ -20,10 +20,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 2.0
-offset_top = -165.0
-offset_right = 2.0
-offset_bottom = -94.0
+offset_top = -207.0
+offset_bottom = -136.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
@@ -94,20 +92,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="GameEnd"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -21.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "结束"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Gameover" type="Sprite2D" parent="GameEnd"]
+position = Vector2(247, 306)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("2_7pn8s")
 
 [node name="StartButton" type="Button" parent="GameEnd"]
 layout_mode = 1

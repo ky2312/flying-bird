@@ -1,24 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://rfun73vhbo5f"]
+[gd_scene load_steps=7 format=3 uid="uid://rfun73vhbo5f"]
 
 [ext_resource type="Script" uid="uid://b2rtp3rbb7mwf" path="res://core/bird/bird.gd" id="1_crnqq"]
-[ext_resource type="Texture2D" uid="uid://citb0sgiv3rio" path="res://core/icon.svg" id="1_g5k2s"]
+[ext_resource type="Texture2D" uid="uid://chu0od1nh8r2h" path="res://assets/Game Objects/yellowbird-upflap.png" id="2_xirqr"]
+[ext_resource type="Texture2D" uid="uid://dtnwbj187fp43" path="res://assets/Game Objects/yellowbird-midflap.png" id="3_6y8tn"]
+[ext_resource type="Texture2D" uid="uid://ddwbdhoij7enf" path="res://assets/Game Objects/yellowbird-downflap.png" id="4_rh6ud"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xde0l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xirqr")
+}],
+"loop": true,
+"name": &"down",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xirqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6y8tn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rh6ud")
+}],
+"loop": true,
+"name": &"flap",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rh6ud")
+}],
+"loop": true,
+"name": &"up",
+"speed": 2.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crnqq"]
-size = Vector2(67.75, 68.25)
+size = Vector2(34, 24)
 
 [node name="Bird" type="CharacterBody2D"]
 script = ExtResource("1_crnqq")
 
-[node name="Image" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_g5k2s")
+[node name="Image" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xde0l")
+animation = &"down"
+frame_progress = 0.236594
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.125, -0.125)
 shape = SubResource("RectangleShape2D_crnqq")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, -0.499998)
-scale = Vector2(3.5, 3.45)
+rect = Rect2(-17, -12, 34, 24)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
