@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bak5yhjh1xh"]
+
+[ext_resource type="Script" uid="uid://dnke65syhbsul" path="res://core/compnents/dynamic_button_group/dynamic_button_group.gd" id="1_akck4"]
+
+[node name="DynamicButtonGroup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_akck4")

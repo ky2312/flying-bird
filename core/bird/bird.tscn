@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://rfun73vhbo5f"]
 
 [ext_resource type="Script" uid="uid://b2rtp3rbb7mwf" path="res://core/bird/bird.gd" id="1_crnqq"]
-[ext_resource type="Texture2D" uid="uid://chu0od1nh8r2h" path="res://assets/Game Objects/yellowbird-upflap.png" id="2_xirqr"]
-[ext_resource type="Texture2D" uid="uid://dtnwbj187fp43" path="res://assets/Game Objects/yellowbird-midflap.png" id="3_6y8tn"]
-[ext_resource type="Texture2D" uid="uid://ddwbdhoij7enf" path="res://assets/Game Objects/yellowbird-downflap.png" id="4_rh6ud"]
+[ext_resource type="Texture2D" uid="uid://chu0od1nh8r2h" path="res://core/assets/Game Objects/yellowbird-upflap.png" id="2_xirqr"]
+[ext_resource type="Texture2D" uid="uid://dtnwbj187fp43" path="res://core/assets/Game Objects/yellowbird-midflap.png" id="3_6y8tn"]
+[ext_resource type="Texture2D" uid="uid://ddwbdhoij7enf" path="res://core/assets/Game Objects/yellowbird-downflap.png" id="4_rh6ud"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xde0l"]
 animations = [{

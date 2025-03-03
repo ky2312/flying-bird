@@ -1,5 +1,11 @@
 extends Node2D
 
+## 默认等级下标
+@export_range(0, 4) var current_level_index: int = 0
+## 等级列表
+## 从易到难
+@export var levels: Array[LevelResource] = []
+
 func game_start():
 	$Bird.init($StartMarker.position)
 	$Bird.show()
@@ -12,11 +18,15 @@ func game_over():
 	$HUD.show_game_end()
 	$GamePlayingTimer.stop()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _enter_tree() -> void:
+	if levels.is_empty():
+		printerr("没有导入难度资源")
+		get_tree().quit(1)
+	
+	Global.levels = levels
+	Global.current_level_index = current_level_index
+
 func _process(delta: float) -> void:
 	pass
 
