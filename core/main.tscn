@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://c2iktag5l2s0m" path="res://core/main.gd" id="1_xa854"]
 [ext_resource type="PackedScene" uid="uid://dsji6gqhrw8wy" path="res://core/wood_manager.tscn" id="2_kagtj"]
 [ext_resource type="PackedScene" uid="uid://rfun73vhbo5f" path="res://core/bird/bird.tscn" id="3_cus2n"]
+[ext_resource type="PackedScene" uid="uid://hrig8akkuxiw" path="res://core/floor/floor.tscn" id="4_kagtj"]
 [ext_resource type="Texture2D" uid="uid://b88ihhhpgaqln" path="res://assets/Game Objects/background-day.png" id="4_xa854"]
 [ext_resource type="PackedScene" uid="uid://dvbxfm181jb14" path="res://core/hud/hud.tscn" id="5_jsmgm"]
-[ext_resource type="Texture2D" uid="uid://cne4pequeegjc" path="res://assets/Game Objects/base.png" id="6_kagtj"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_xa854")
@@ -21,10 +21,7 @@ position = Vector2(240, 400)
 
 [node name="WoodManager" parent="." instance=ExtResource("2_kagtj")]
 
-[node name="Floor" type="Sprite2D" parent="."]
-position = Vector2(240, 720)
-scale = Vector2(1.42857, 1.42857)
-texture = ExtResource("6_kagtj")
+[node name="Floor" parent="." instance=ExtResource("4_kagtj")]
 
 [node name="Bird" parent="." instance=ExtResource("3_cus2n")]
 visible = false
@@ -34,6 +31,7 @@ visible = false
 [node name="GamePlayingTimer" type="Timer" parent="."]
 
 [connection signal="touch" from="WoodManager" to="." method="_on_wood_manager_touch"]
+[connection signal="entered" from="Floor" to="." method="_on_floor_entered"]
 [connection signal="exited" from="Bird" to="." method="_on_bird_exited"]
 [connection signal="game_end" from="HUD" to="." method="_on_hud_game_end"]
 [connection signal="game_start" from="HUD" to="." method="_on_hud_game_start"]

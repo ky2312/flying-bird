@@ -40,3 +40,7 @@ func _on_wood_manager_touch() -> void:
 
 func _on_bird_exited() -> void:
 	game_over()
+
+
+func _on_floor_entered() -> void:
+	game_over()
