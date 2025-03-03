@@ -6,6 +6,7 @@ signal touch
 @export var wood: PackedScene
 
 var woods: Dictionary[Wood, int]
+var GENERATE_SPEED = 1.5
 
 func create():
 	var w: Wood = wood.instantiate()
@@ -25,6 +26,7 @@ func create():
 
 func start():
 	create()
+	$Timer.wait_time = GENERATE_SPEED
 	$Timer.start()
 	
 func clear():

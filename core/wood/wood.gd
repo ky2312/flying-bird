@@ -4,11 +4,14 @@ class_name Wood
 signal touch
 signal screen_exited
 
+const SPEED = 200
+
 func init(origin_pos: Vector2):
 	position = origin_pos
 	
 func _physics_process(delta: float) -> void:
-	position += Vector2.LEFT * 2.5
+	if visible:
+		position += Vector2.LEFT * SPEED * delta
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
