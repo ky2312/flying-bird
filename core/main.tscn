@@ -25,6 +25,7 @@ position = Vector2(240, 400)
 
 [node name="Bird" parent="." instance=ExtResource("3_cus2n")]
 visible = false
+position = Vector2(240, 342)
 
 [node name="HUD" parent="." instance=ExtResource("5_jsmgm")]
 

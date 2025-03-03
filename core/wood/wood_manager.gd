@@ -6,14 +6,17 @@ signal touch
 @export var wood: PackedScene
 
 var woods: Dictionary[Wood, int]
-var GENERATE_SPEED = 1.5
+# 生成速度
+var GENERATE_SPEED = 2
+# 移动速度
+const SPEED = 150
 
 func create():
 	var w: Wood = wood.instantiate()
 	var w_pos = $WoodMarker.position
 	var max_h_offset = get_viewport_rect().size.y * 0.2
 	w_pos.y += randf_range(max_h_offset * -1, max_h_offset)
-	w.init(w_pos)
+	w.init(w_pos, SPEED)
 	
 	w.connect("touch", func(): touch.emit())
 	w.connect("screen_exited", func(): 

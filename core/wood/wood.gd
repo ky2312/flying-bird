@@ -4,14 +4,15 @@ class_name Wood
 signal touch
 signal screen_exited
 
-const SPEED = 200
+var speed = 1
 
-func init(origin_pos: Vector2):
+func init(origin_pos: Vector2, _speed: int):
 	position = origin_pos
+	speed = _speed
 	
 func _physics_process(delta: float) -> void:
 	if visible:
-		position += Vector2.LEFT * SPEED * delta
+		position += Vector2.LEFT * speed * delta
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
