@@ -9,8 +9,6 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_xa854")
-woodManager = ExtResource("2_kagtj")
-Bird = ExtResource("3_cus2n")
 metadata/_edit_horizontal_guides_ = [640.0]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -21,15 +19,22 @@ texture = ExtResource("4_xa854")
 [node name="StartMarker" type="Marker2D" parent="."]
 position = Vector2(240, 400)
 
-[node name="HUD" parent="." instance=ExtResource("5_jsmgm")]
-
-[node name="GamePlayingTimer" type="Timer" parent="."]
+[node name="WoodManager" parent="." instance=ExtResource("2_kagtj")]
 
 [node name="Floor" type="Sprite2D" parent="."]
 position = Vector2(240, 720)
 scale = Vector2(1.42857, 1.42857)
 texture = ExtResource("6_kagtj")
 
+[node name="Bird" parent="." instance=ExtResource("3_cus2n")]
+visible = false
+
+[node name="HUD" parent="." instance=ExtResource("5_jsmgm")]
+
+[node name="GamePlayingTimer" type="Timer" parent="."]
+
+[connection signal="touch" from="WoodManager" to="." method="_on_wood_manager_touch"]
+[connection signal="exited" from="Bird" to="." method="_on_bird_exited"]
 [connection signal="game_end" from="HUD" to="." method="_on_hud_game_end"]
 [connection signal="game_start" from="HUD" to="." method="_on_hud_game_start"]
 [connection signal="timeout" from="GamePlayingTimer" to="." method="_on_game_playing_timer_timeout"]

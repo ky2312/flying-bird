@@ -2,6 +2,7 @@ extends Node2D
 class_name Wood
 
 signal touch
+signal screen_exited
 
 func init(origin_pos: Vector2):
 	position = origin_pos
@@ -15,4 +16,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
+	screen_exited.emit()

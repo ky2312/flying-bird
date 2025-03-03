@@ -5,21 +5,33 @@ signal touch
 
 @export var wood: PackedScene
 
+var woods: Dictionary[Wood, int]
+
 func create():
-	var w = wood.instantiate()
+	var w: Wood = wood.instantiate()
 	var w_pos = $WoodMarker.position
 	var max_h_offset = get_viewport_rect().size.y * 0.2
 	w_pos.y += randf_range(max_h_offset * -1, max_h_offset)
 	w.init(w_pos)
-	w.connect("touch", func():
-		touch.emit()
+	
+	w.connect("touch", func(): touch.emit())
+	w.connect("screen_exited", func(): 
+		woods.erase(w)
+		w.queue_free()
 	)
 	
+	woods[w] = 1
 	add_child(w)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func start():
 	create()
+	$Timer.start()
+	
+func clear():
+	for w in woods:
+		w.queue_free()
+	woods.clear()
+	$Timer.stop()
 
 func _on_timer_timeout() -> void:
 	create()
