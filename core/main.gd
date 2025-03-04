@@ -41,7 +41,7 @@ func _on_hud_game_end() -> void:
 
 
 func _on_game_playing_timer_timeout() -> void:
-	$HUD.update_score(1)
+	EventBus.emitv("add_score", 1)
 
 
 func _on_wood_manager_touch() -> void:

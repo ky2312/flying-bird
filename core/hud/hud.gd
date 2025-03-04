@@ -10,8 +10,6 @@ class ControlPage:
 		self.node = node
 		self.is_show = is_show
 
-# 分数
-var score = 0
 @onready var node_menu = $Menu
 @onready var node_menu_main = $Menu/Main
 @onready var node_menu_button_game_start = $Menu/Main/ButtonGroup/StartButton
@@ -54,7 +52,7 @@ func show_menu():
 	node_game_end.visible = false
 
 func show_playing():
-	init_score()
+	EventBus.emit("init_score")
 	node_menu.visible = false
 	node_playing.visible = true
 	node_game_end.visible = false
@@ -64,14 +62,9 @@ func show_game_end():
 	node_menu.visible = false
 	node_playing.visible = false
 	node_game_end.visible = true
-
-func init_score():
-	score = 0
-	node_playing_score.text = str(score)
 	
-func update_score(v: int):
-	score += v
-	node_playing_score.text = str(score)
+func update_score():
+	node_playing_score.text = str(Global.score)
 
 func _init_level_button():
 	var list = Global.levels
@@ -96,8 +89,12 @@ func _ready() -> void:
 	node_game_end_button_game_start.connect("pressed", _on_game_start)
 	node_game_end_button_game_end.connect("pressed", _on_game_end)
 	node_game_end_button_home.connect("pressed", _on_home)
+	EventBus.on("update_score", update_score)
 	_init_level_button()
 	_on_home()
+	
+func _exit_tree() -> void:
+	EventBus.off("update_score", update_score)
 	
 func _control_display(list: Array[ControlPage]):
 	for n in list:
