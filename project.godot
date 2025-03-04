@@ -18,11 +18,16 @@ config/icon="res://core/icon.svg"
 [autoload]
 
 Global="*res://core/global.gd"
+EventBus="*res://addons/event-bus-plugin/event-bus.gd"
 
 [display]
 
 window/size/viewport_width=480
 window/size/viewport_height=800
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/event-bus-plugin/plugin.cfg")
 
 [input]
 
